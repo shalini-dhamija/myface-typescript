@@ -3,13 +3,36 @@
 <%- include('_header') -%>
 <body>
 <h1>Posts</h1>
-<ol>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Message</th>
+        <th>Image URL</th>
+        <th>Created At</th>
+        <th>Posted BY</th>
+        <th>Liked By</th>
+        <th>Disliked By</th>        
+    </tr>
     <% postList.results.forEach(function(post) {%>
-        <li>
-            <%= post.message %> - <%= format(post.createdAt, "yyyy-MM-dd HH:mm:ss") %>
-        </li>
-    <% }); %>
-</ol>
+        <tr>
+            <td><%= post.id %></td>
+            <td><%= post.message %></td>
+            <td><img src=<%= post.imageUrl %> alt="This is an image"></td>
+            <td><%= post.createdAt %></td>
+            <td><%= post.postedBy.name %></td>
+            <td><% post.likedBy.forEach(function(postUser) {%> <%= postUser.name %>,<% }); %></td>
+            <td><% post.dislikedBy.forEach(function(postUser) {%> <%= postUser.name %>,<% }); %></td>
+        </tr>
+        <% }); %>
+</table>
+<%if (postList.next) { %>
+    <a href="<%= postList.next %>">Next</a>
+<% } %>
+<%if (postList.previous) { %>
+    <a href="<%= postList.previous %>">Previous</a>
+<% } %>
 </body>
 <%- include('_footer') -%>
 </html>
+
+<!-- Write your comments here -->
