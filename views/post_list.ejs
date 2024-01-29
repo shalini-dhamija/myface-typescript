@@ -7,6 +7,8 @@
     <tr>
         <th>ID</th>
         <th>Message</th>
+        <th>Like</th>
+        <th>DisLike</th>
         <th>Image URL</th>
         <th>Created At</th>
         <th>Posted BY</th>
@@ -14,9 +16,12 @@
         <th>Disliked By</th>        
     </tr>
     <% postList.results.forEach(function(post) {%>
-        <tr>
+        <tr><%const likePost = '/posts/'+ post.id + '/like/'
+            const dislikePost = '/posts/'+ post.id + '/dislike/' %>
             <td><%= post.id %></td>
             <td><%= post.message %></td>
+            <td><form method="post" action=<%= likePost %> ><button type="submit">Like</button></form></td>
+            <td><form method="post" action=<%= dislikePost %> ><button type="submit">Dislike</button></form></td>
             <td><img src=<%= post.imageUrl %> alt="This is an image"></td>
             <td><%= post.createdAt %></td>
             <td><%= post.postedBy.name %></td>
