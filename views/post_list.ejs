@@ -1,35 +1,68 @@
 <html lang="en-gb">
 <%- include('_head') -%>
 <%- include('_header') -%>
-<body>
+<body class="bgcolor">
+
 <h1>Posts</h1>
+<button id="btnChangeColor" type="button">Change Color</button>
+
+<ul>
+    <li class="parent">
+        <h2 class="child">ID</h2>
+        <h2 class="child">Message</h2>
+        <h2 class="child">Image URL</h2>
+        <h2 class="child">Created At</h2>
+        <h2 class="child">Posted BY</h2>
+        <h2 class="child">Liked By</h2>
+        <h2 class="child">Disliked By</h2>        
+    </li>
+    <% postList.results.forEach(function(post) {%>
+        <li class="parent"><%const likePost = '/posts/'+ post.id + '/like/'
+            const dislikePost = '/posts/'+ post.id + '/dislike/' %>
+            <div class="child"><%= post.id %></div>
+            <div class="child"><%= post.message %></div>
+            <div class="child"><img src=<%= post.imageUrl %> alt="This is an image" width=100px height=100px>
+                <div>
+                    <form method="post" action=<%= likePost %> ><button type="submit">Like</button></form>
+                    <form method="post" action=<%= dislikePost %> ><button type="submit">Dislike</button></form>
+                </div>
+            </div>
+            <div class="child"><%= post.createdAt %></div>
+            <div class="child"><%= post.postedBy.name %></div>
+            <div class="child"><% post.likedBy.forEach(function(postUser) {%> <%= postUser.name %>,<% }); %></div>
+            <div class="child"><% post.dislikedBy.forEach(function(postUser) {%> <%= postUser.name %>,<% }); %></div>
+        </li>
+        <% }); %>
+</ul>
+<!--
 <table>
-    <tr>
-        <th>ID</th>
-        <th>Message</th>
-        <th>Like</th>
-        <th>DisLike</th>
-        <th>Image URL</th>
-        <th>Created At</th>
-        <th>Posted BY</th>
-        <th>Liked By</th>
-        <th>Disliked By</th>        
+    <tr class="parent">
+        <th class="child">ID</th>
+        <th class="child">Message</th>
+        <th class="child">Like</th>
+        <th class="child">Dislike</th>
+        <th class="child">Image URL</th>
+        <th class="child">Created At</th>
+        <th class="child">Posted BY</th>
+        <th class="child">Liked By</th>
+        <th class="child">Disliked By</th>        
     </tr>
     <% postList.results.forEach(function(post) {%>
-        <tr><%const likePost = '/posts/'+ post.id + '/like/'
+        <tr class="parent"><%const likePost = '/posts/'+ post.id + '/like/'
             const dislikePost = '/posts/'+ post.id + '/dislike/' %>
-            <td><%= post.id %></td>
-            <td><%= post.message %></td>
-            <td><form method="post" action=<%= likePost %> ><button type="submit">Like</button></form></td>
-            <td><form method="post" action=<%= dislikePost %> ><button type="submit">Dislike</button></form></td>
-            <td><img src=<%= post.imageUrl %> alt="This is an image"></td>
-            <td><%= post.createdAt %></td>
-            <td><%= post.postedBy.name %></td>
-            <td><% post.likedBy.forEach(function(postUser) {%> <%= postUser.name %>,<% }); %></td>
-            <td><% post.dislikedBy.forEach(function(postUser) {%> <%= postUser.name %>,<% }); %></td>
+            <td class="child"><%= post.id %></td>
+            <td class="child"><%= post.message %></td>
+            <td class="button"><form method="post" action=<%= likePost %> ><button type="submit">Like</button></form></td>
+            <td class="child"><form method="post" action=<%= dislikePost %> ><button type="submit">Dislike</button></form></td>
+            <td class="child"><img src=<%= post.imageUrl %> alt="This is an image" width=100px height=100px></td>
+            <td class="child"><%= post.createdAt %></td>
+            <td class="child"><%= post.postedBy.name %></td>
+            <td class="child"><% post.likedBy.forEach(function(postUser) {%> <%= postUser.name %>,<% }); %></td>
+            <td class="child"><% post.dislikedBy.forEach(function(postUser) {%> <%= postUser.name %>,<% }); %></td>
         </tr>
         <% }); %>
 </table>
+-->
 <%if (postList.next) { %>
     <a href="<%= postList.next %>">Next</a>
 <% } %>

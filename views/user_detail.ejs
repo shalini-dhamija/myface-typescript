@@ -1,15 +1,28 @@
 <html lang="en-gb">
 <%- include('_head') -%>
 <%- include('_header') -%>
-<body>
-<h1><%= name %></h1>
-<ul>
+<body class="bgcolor">
+<!--<h1><%= name %></h1>-->
+<div class="flexRow">
+    <div class="div1 flexColumn">
+        <img class="coverImage" src=<%= coverImageUrl %> alt="This is cover image">
+        <img class="profileImage" src=<%= profileImageUrl %> alt="This is cover image">
+        <p class="fullName"><%= name %></p>
+        <p class="userName"><%= username %></p>
+    </div>
+    <div class="posts flexColumn"><img class="fullScreen" src=<%= coverImageUrl %> alt="This is cover image"></div>
+    <div class="likes flexColumn"><img class="fullScreen" src=<%= coverImageUrl %> alt="This is cover image"></div>
+    <div class="dislikes flexColumn"><img class="fullScreen" src=<%= coverImageUrl %> alt="This is cover image"></div>
+</div>
+  
+
+<!-- <ul>
     <li>ID: <%= id %></li>
     <li>Username: <%= username %></li>
     <li>Email: <%= email %></li>
     <li><img src=<%= profileImageUrl %> alt="This is profile image"></li>
     <li><img src=<%= coverImageUrl %> alt="This is cover image"></li>
-</ul>
+</ul> -->
 </body>
 <%- include('_footer') -%>
 </html>

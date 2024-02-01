@@ -1,1 +1,115 @@
-/* Add your styles here. */
+ 
+.bgcolor{
+    background-color:white
+} 
+
+/* MENU Styling - Start */
+
+.hideMenu {
+    display: none;
+} 
+.showMenu {
+    display: block;
+} 
+.flexParent {
+    display: flex;
+    flex-direction: row;      
+}
+.flexChild {
+    flex-grow: 1;
+    align-self: flex-start;
+    flex-basis: auto;    
+}
+
+.topNav{
+    ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;    
+}
+}
+@media (min-width: 300px) {
+    .flexColumn {
+        padding: 24px;
+    }
+    .flexParent{
+        flex-direction: column;
+    }
+    
+}
+@media (min-width: 800px) {
+    .flexColumn {
+        padding: 32px;
+    }
+    .flexParent{
+        flex-direction: row;
+    }
+    
+}
+@media (min-width: 1400px) {
+    .flexColumn {
+        padding: 48px;
+    }
+    .flexParent{
+        flex-direction: row;
+    }
+}
+/* MENU Styling - End */
+
+.flexRow {
+    display: flex;
+    flex-direction: column;    
+  }
+  
+  /* Create four equal columns */
+  .flexColumn {
+    flex: 25%;
+    padding: 48px;
+  }
+
+  .coverImage{
+    width: 100%;
+   }
+
+   .profileImage{
+    width:200px;
+    border: 5px solid white;
+    border-radius:50%; 
+    position: relative;
+    transform: translate(10%, -50%);        
+   }
+
+   .fullName{
+    position: relative;
+    transform: translate(40%, -600%); 
+    font-family: "Segoe UI";
+    font-size: 40px;
+    font-weight: 400;
+   }
+
+   .userName{
+    position: relative;
+    transform: translate(20%, -800%); 
+    font-family: "Segoe UI";
+    font-size: 32px;
+    font-weight: 600;
+   }
+
+
+
+/*For Post List Page*/
+.parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    column-gap: 20px;
+    align-content: space-evenly;
+    align-items: baseline;    
+}
+.child {
+    flex-grow: 1;
+    align-self: flex-start;
+    flex-basis: auto;
+    width: 100px;
+}
+
